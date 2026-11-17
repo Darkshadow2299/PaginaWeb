@@ -1,18 +1,33 @@
 /* ---------- Textos en cada idioma ---------- */
 const TEXT = {
   en: {
+    nav_about: "About",
+    about_title: "About me",
+    about_p1: "I'm Mauricio, an architectural visualization artist with a Master's degree in the field and a background in 3D animation and interactive environments.",
+    about_p2: "What I enjoy most about this sector is turning an idea into an image: working with light, materials and composition until a space feels real and tells a story. Photography and architecture are the two passions that feed my work.",
+    about_p3: "I'm currently deepening my skills in BIM and Blender, always looking for ways to make my visuals more precise and more atmospheric.",
     nav_contact: "Contact",
     intro: "Architectural visualization & 3D.",
     contact_title: "Contact",
     contact_text: "Open to collaborations and new opportunities."
   },
   fr: {
+    nav_about: "À propos",
+    about_title: "À propos de moi",
+    about_p1: "Je suis Mauricio, artiste en visualisation architecturale, titulaire d'un master dans ce domaine, avec une formation en animation 3D et en environnements interactifs.",
+    about_p2: "Ce que j'aime le plus dans ce secteur, c'est transformer une idée en image : travailler la lumière, les matériaux et la composition jusqu'à ce qu'un espace paraisse réel et raconte une histoire. La photographie et l'architecture sont les deux passions qui nourrissent mon travail.",
+    about_p3: "Je perfectionne actuellement mes compétences en BIM et en Blender, toujours à la recherche de visuels plus précis et plus atmosphériques.",
     nav_contact: "Contact",
     intro: "Visualisation architecturale & 3D.",
     contact_title: "Contact",
     contact_text: "Ouvert aux collaborations et aux nouvelles opportunités."
   },
   es: {
+    nav_about: "Sobre mí",
+    about_title: "Sobre mí",
+    about_p1: "Soy Mauricio, artista de visualización arquitectónica, con un máster en este campo y formación en animación 3D y entornos interactivos.",
+    about_p2: "Lo que más me gusta de este sector es convertir una idea en imagen: trabajar la luz, los materiales y la composición hasta que un espacio parezca real y cuente una historia. La fotografía y la arquitectura son las dos pasiones que alimentan mi trabajo.",
+    about_p3: "Actualmente profundizo en BIM y Blender, siempre buscando que mis imágenes sean más precisas y más atmosféricas.",
     nav_contact: "Contacto",
     intro: "Visualización arquitectónica y 3D.",
     contact_title: "Contacto",
