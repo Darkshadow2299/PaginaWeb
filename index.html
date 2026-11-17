@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mauricio de los Casares — Portfolio</title>
+  <meta name="description" content="Portfolio of Mauricio de los Casares: architectural visualization and 3D.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="top">
+    <a class="name" href="#top" id="top">Mauricio de los Casares</a>
+    <nav class="right">
+      <a href="#contact" data-i18n="nav_contact">Contact</a>
+      <span class="langs" aria-label="Language">
+        <button data-lang="en" class="active">EN</button>
+        <button data-lang="fr">FR</button>
+        <button data-lang="es">ES</button>
+      </span>
+    </nav>
+  </header>
+
+  <main>
+    <p class="intro" data-i18n="intro">Architectural visualization &amp; 3D.</p>
+
+    <!-- La galería se genera automáticamente desde projects.js -->
+    <section class="gallery" id="gallery" aria-label="Projects"></section>
+
+    <section class="contact" id="contact">
+      <h2 data-i18n="contact_title">Contact</h2>
+      <p data-i18n="contact_text">Open to collaborations and new opportunities.</p>
+      <p class="links">
+        <!-- CAMBIA estos datos por los tuyos -->
+        <a href="mailto:your@email.com">your@email.com</a>
+        <a href="https://www.linkedin.com/in/your-profile" target="_blank" rel="noopener">LinkedIn</a>
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <span>© <span id="year"></span> Mauricio de los Casares</span>
+  </footer>
+
+  <div class="lightbox" id="lightbox" hidden>
+    <button class="lb-close" aria-label="Close">×</button>
+    <button class="lb-prev" aria-label="Previous">‹</button>
+    <img alt="" id="lb-img">
+    <button class="lb-next" aria-label="Next">›</button>
+    <p id="lb-cap"></p>
+  </div>
+
+  <script src="projects.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
