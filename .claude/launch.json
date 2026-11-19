@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "site",
+      "runtimeExecutable": "powershell",
+      "runtimeArgs": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "C:\\Users\\mauri\\AppData\\Local\\Temp\\claude\\2c13d7e7a0d13912\\96543300-43d3-4f9f-8f60-a20ce31d6393\\scratchpad\\serve.ps1", "-Root", "C:\\Mauri\\GitRepositories\\PaginaWeb", "-Port", "8765"],
+      "port": 8765
+    }
+  ]
+}
