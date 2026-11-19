@@ -55,29 +55,34 @@ a { color: inherit; text-decoration: none; }
 .langs button:hover { color: var(--text); }
 .langs button.active { color: var(--text); border-bottom-color: var(--text); }
 
-/* ---------- Intro ---------- */
-.intro {
-  padding: clamp(24px, 4vw, 48px) var(--pad) clamp(18px, 3vw, 32px);
-  font-size: 0.78rem;
-  font-weight: 400;
-  letter-spacing: 0.28em;
+/* ---------- Título de página (igual en Work, About y Contact) ---------- */
+.page-title {
+  padding: clamp(40px, 6vw, 80px) var(--pad) clamp(28px, 4vw, 48px);
+  font-size: clamp(1.35rem, 2.4vw, 2rem);
+  font-weight: 300;
+  line-height: 1.3;
+  letter-spacing: 0.24em;
   text-transform: uppercase;
   text-align: center;
 }
 
 /* ---------- Gallery ---------- */
+/* Las columnas las crea script.js (nº de columnas según el ancho: ver COLUMNS_FOR) */
 .gallery {
   padding: 0 var(--pad);
-  columns: 4;          /* ← nº de imágenes por fila en ordenador */
-  column-gap: var(--gap);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--gap);
 }
-@media (max-width: 1000px) { .gallery { columns: 3; } }
-@media (max-width: 700px)  { .gallery { columns: 2; } }
-@media (max-width: 420px)  { .gallery { columns: 1; } }
+.gallery .col {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+}
 
 .gallery figure {
-  break-inside: avoid;
-  margin-bottom: var(--gap);
   cursor: zoom-in;
   overflow: hidden;
   background: #e8e6e1;
@@ -100,31 +105,20 @@ a { color: inherit; text-decoration: none; }
 
 /* ---------- About ---------- */
 .about {
-  padding: clamp(70px, 12vw, 180px) var(--pad) 0;
+  padding: 0 var(--pad) clamp(40px, 6vw, 80px);
   max-width: 760px;
   margin: 0 auto;
   min-height: 60vh;
-}
-.about h2 {
-  font-size: 0.78rem; letter-spacing: 0.28em; text-transform: uppercase;
-  font-weight: 400; margin-bottom: 22px;
 }
 .about-text p { margin-bottom: 18px; font-size: 1.15rem; font-weight: 200; line-height: 1.8; }
 
 /* ---------- Contact ---------- */
 .contact {
-  padding: clamp(70px, 14vw, 200px) var(--pad) clamp(60px, 8vw, 100px);
+  padding: 0 var(--pad) clamp(60px, 8vw, 100px);
   text-align: center;
   min-height: 60vh;
 }
-.contact h2 {
-  font-size: 0.78rem;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  font-weight: 400;
-  margin-bottom: 18px;
-}
-.contact p { color: var(--muted); }
+.contact p { color: var(--muted); font-size: 1.15rem; font-weight: 200; }
 .contact .links {
   margin-top: 22px;
   display: flex; justify-content: center; gap: 32px; flex-wrap: wrap;

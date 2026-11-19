@@ -49,9 +49,39 @@ const lbCap = document.getElementById("lb-cap");
 let current = 0;
 
 /* ---------- Galería ---------- */
+/* Nº de columnas según el ancho de la ventana */
+function COLUMNS_FOR(width) {
+  if (width <= 420) return 1;
+  if (width <= 700) return 2;
+  if (width <= 1000) return 3;
+  return 4; // ← nº de imágenes por fila en ordenador
+}
+
+/* Proporción (alto / ancho) de cada imagen, para saber qué columna es la más baja */
+const ratios = [];
+function loadRatios() {
+  return Promise.all(PROJECTS.map((p, i) => new Promise((resolve) => {
+    const im = new Image();
+    im.onload = () => { ratios[i] = im.naturalHeight / im.naturalWidth || 1; resolve(); };
+    im.onerror = () => { ratios[i] = 1; resolve(); };
+    im.src = p.src;
+  })));
+}
+
+let colCount = 0;
 function buildGallery() {
   if (!gallery) return; // esta página no tiene galería
+  colCount = COLUMNS_FOR(window.innerWidth);
   gallery.innerHTML = "";
+  const cols = [];
+  const heights = [];
+  for (let c = 0; c < colCount; c++) {
+    const col = document.createElement("div");
+    col.className = "col";
+    gallery.appendChild(col);
+    cols.push(col);
+    heights.push(0);
+  }
   PROJECTS.forEach((p, i) => {
     const fig = document.createElement("figure");
     const img = document.createElement("img");
@@ -62,8 +92,18 @@ function buildGallery() {
     cap.textContent = img.alt;
     fig.append(img, cap);
     fig.addEventListener("click", () => openLightbox(i));
-    gallery.appendChild(fig);
+    // Cada imagen va a la columna más baja en ese momento
+    const c = heights.indexOf(Math.min(...heights));
+    cols[c].appendChild(fig);
+    heights[c] += (ratios[i] || 1) + 0.05; // 0.05 ≈ el hueco entre imágenes
     revealObserver.observe(fig);
+  });
+}
+
+if (gallery) {
+  loadRatios().then(buildGallery);
+  window.addEventListener("resize", () => {
+    if (COLUMNS_FOR(window.innerWidth) !== colCount) buildGallery();
   });
 }
 
