@@ -1,6 +1,7 @@
 /* ---------- Textos en cada idioma ---------- */
 const TEXT = {
   en: {
+    nav_work: "Work",
     nav_about: "About",
     about_title: "About me",
     about_p1: "I'm Mauricio, an architectural visualization artist with a Master's degree in the field and a background in 3D animation and interactive environments.",
@@ -12,6 +13,7 @@ const TEXT = {
     contact_text: "Open to collaborations and new opportunities."
   },
   fr: {
+    nav_work: "Travaux",
     nav_about: "À propos",
     about_title: "À propos de moi",
     about_p1: "Je suis Mauricio, artiste en visualisation architecturale, titulaire d'un master dans ce domaine, avec une formation en animation 3D et en environnements interactifs.",
@@ -23,6 +25,7 @@ const TEXT = {
     contact_text: "Ouvert aux collaborations et aux nouvelles opportunités."
   },
   es: {
+    nav_work: "Trabajos",
     nav_about: "Sobre mí",
     about_title: "Sobre mí",
     about_p1: "Soy Mauricio, artista de visualización arquitectónica, con un máster en este campo y formación en animación 3D y entornos interactivos.",
@@ -47,6 +50,7 @@ let current = 0;
 
 /* ---------- Galería ---------- */
 function buildGallery() {
+  if (!gallery) return; // esta página no tiene galería
   gallery.innerHTML = "";
   PROJECTS.forEach((p, i) => {
     const fig = document.createElement("figure");
@@ -81,7 +85,7 @@ function setLang(l) {
     b.classList.toggle("active", b.dataset.lang === l);
   });
   buildGallery();
-  if (!lightbox.hidden) showImage(current);
+  if (lightbox && !lightbox.hidden) showImage(current);
 }
 document.querySelectorAll(".langs button").forEach((b) => {
   b.addEventListener("click", () => setLang(b.dataset.lang));
@@ -98,16 +102,18 @@ function showImage(i) {
 function openLightbox(i) { showImage(i); lightbox.hidden = false; document.body.style.overflow = "hidden"; }
 function closeLightbox() { lightbox.hidden = true; document.body.style.overflow = ""; }
 
-document.querySelector(".lb-close").addEventListener("click", closeLightbox);
-document.querySelector(".lb-prev").addEventListener("click", () => showImage(current - 1));
-document.querySelector(".lb-next").addEventListener("click", () => showImage(current + 1));
-lightbox.addEventListener("click", (e) => { if (e.target === lightbox) closeLightbox(); });
-document.addEventListener("keydown", (e) => {
-  if (lightbox.hidden) return;
-  if (e.key === "Escape") closeLightbox();
-  if (e.key === "ArrowLeft") showImage(current - 1);
-  if (e.key === "ArrowRight") showImage(current + 1);
-});
+if (lightbox) {
+  document.querySelector(".lb-close").addEventListener("click", closeLightbox);
+  document.querySelector(".lb-prev").addEventListener("click", () => showImage(current - 1));
+  document.querySelector(".lb-next").addEventListener("click", () => showImage(current + 1));
+  lightbox.addEventListener("click", (e) => { if (e.target === lightbox) closeLightbox(); });
+  document.addEventListener("keydown", (e) => {
+    if (lightbox.hidden) return;
+    if (e.key === "Escape") closeLightbox();
+    if (e.key === "ArrowLeft") showImage(current - 1);
+    if (e.key === "ArrowRight") showImage(current + 1);
+  });
+}
 
 /* ---------- Inicio ---------- */
 document.getElementById("year").textContent = new Date().getFullYear();
