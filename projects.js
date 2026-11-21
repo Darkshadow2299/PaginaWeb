@@ -8,6 +8,8 @@
    El orden de aquí es el orden en la web.
    ============================================================ */
 const PROJECTS = [
+  { src: "images/rincon-01.webp",
+    title: { en: "Reading corner", fr: "Coin lecture", es: "Rincón de lectura" } },
   { src: "images/hillsdale-01.jpg",
     title: { en: "Hillsdale", fr: "Hillsdale", es: "Hillsdale" } },
   { src: "images/cycling-studio-01.jpg",
